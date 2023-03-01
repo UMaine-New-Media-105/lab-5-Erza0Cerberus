@@ -1,0 +1,100 @@
+function setup() {
+  createCanvas(400, 400);
+
+}
+
+let yOffset = 0;
+let yDir = 1;
+let hor = 0;
+let ver = 0;
+
+function draw() {
+  background("grey")
+  
+  addSonic(0 + hor, 200 + yOffset + ver, 0.3);
+  
+  if (ver + yOffset <= -200)
+    {
+      yDir = 1
+    }
+  else if (ver + yOffset >= 90)
+    {
+      yDir = -1
+    }
+  
+  yOffset += yDir
+  
+}
+
+function addSonic(x, y, size) {
+  push();
+  translate(x, y);
+  scale(size);
+
+  noStroke();
+
+  //ears
+  fill("dodgerblue");
+
+  ellipse(150, 80, 40, 80);
+  ellipse(250, 80, 40, 80);
+
+  //ear insides
+  fill("bisque");
+  ellipse(150, 80, 20, 60);
+  ellipse(250, 80, 20, 60);
+
+  //quills
+  fill("dodgerblue");
+
+  ellipse(200, 225, 250, 340);
+
+  //body
+  fill("bisque");
+  ellipse(200, 240, 200, 280);
+
+  //head
+  ellipse(200, 140, 150);
+
+  //tummy
+  fill("white");
+  ellipse(200, 250, 100, 150);
+
+  //tail
+  fill("bisque");
+  ellipse(202, 380, 13, 30);
+
+  //eyes
+  fill("mediumspringgreen");
+
+  ellipse(170, 100, 30, 30);
+  ellipse(230, 100, 30, 30);
+
+  //nose
+  rotate(1);
+  translate(10, -250);
+  fill("black");
+  ellipse(200, 130, 10, 25);
+
+  pop();
+}
+
+function keyPressed()
+{
+  if (keyCode == UP_ARROW)
+    {
+      ver -= 10
+    }
+  else if (keyCode == DOWN_ARROW)
+    {
+      ver += 10
+    }
+  else if (keyCode == LEFT_ARROW)
+    {
+      hor -= 10
+    }
+  else if (keyCode == RIGHT_ARROW)
+    {
+      hor += 10
+    }
+}
